@@ -1,1 +1,11 @@
-<p>search-bar works!</p>
+<div class ="search-container">
+    <form class="search-form" #form="ngForm" (ngSubmit)="onSumbit(form)">
+        <span class="logo" routerLink="/">Alpha</span>
+        <input
+            class="search-input"
+            name="search"
+            ngModel
+            placeholder="Search games from here"/>
+            <button class="search-button">Search</button>
+    </form>
+</div>
