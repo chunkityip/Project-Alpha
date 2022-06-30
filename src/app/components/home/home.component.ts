@@ -9,11 +9,12 @@ import { HttpService } from 'src/app/services/http.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit, OnDestroy {
-  public sort!: string;
-  public games!: Array<Game>;
-  private routeSub!: Subscription;
-  private gameSub!: Subscription;
+  public sort: string;
+  public games: Array<Game>;
+  private routeSub: Subscription;
+  private gameSub: Subscription;
 
   constructor(    
     private httpService: HttpService,

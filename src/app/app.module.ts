@@ -1,47 +1,43 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-//FormsModule is used to make all the necessary imports for form implementation
 import { FormsModule } from '@angular/forms';
-/*
-Communicate with a server over the HTTP protocol ,to download or upload 
-data and access other back-end services
-*/
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-//The following is Material module
-//To build design components for desktop and mobile web applications
-import { MatTabsModule } from '@angular/material/tabs'; 
-import { MatIconModule} from '@angular/material/icon';
+import { GaugeModule } from 'angular-gauge';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+
+import { AppComponent } from './app.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
 import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
-
-
+import { DetailsComponent } from './components/details/details.component';
+import { GameTabsComponent } from './components/game-tabs/game-tabs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsComponent,
+    GameTabsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
+    GaugeModule.forRoot(),
     HttpClientModule,
-    MatTabsModule,
-    MatIconModule,
+    FormsModule,
+    BrowserAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatTabsModule,
+    MatIconModule,
   ],
   providers: [
     {
@@ -53,8 +49,8 @@ import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorsInterceptor,
       multi: true,
-    }
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
